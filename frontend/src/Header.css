@@ -1,0 +1,48 @@
+.header {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 0;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.home-button {
+  text-decoration: none;
+  padding: 0;
+}
+
+.home-button h1 {
+  color: #333;
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.home-button:hover h1 {
+  color: #007bff;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.login-button {
+  background: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.login-button:hover {
+  background: #0056b3;
+}
