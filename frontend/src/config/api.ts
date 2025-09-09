@@ -1,6 +1,6 @@
 // API Configuration
 const API_CONFIG = {
-  BASE_URL: 'http://localhost:8000', // Change this to your backend URL
+  BASE_URL: 'https://memearena.bugbrekr.dev', // Change this to your backend URL
   ENDPOINTS: {
     // Auth endpoints
     LOGIN: '/a/auth/login',
