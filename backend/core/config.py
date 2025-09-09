@@ -14,7 +14,7 @@ class SubConfig:
 
 @dataclass
 class Server(SubConfig):
-    cors_allowed_origins: tuple[str] = ()
+    cors_allowed_origins: tuple[str] = tuple()
 
 @dataclass
 class MongoDB(SubConfig):
@@ -22,9 +22,15 @@ class MongoDB(SubConfig):
     db: str
 
 @dataclass
+class Auth(SubConfig):
+    session_ttl: int
+    admin_username: str
+
+@dataclass
 class Config:
     server: Server
     mongodb: MongoDB
+    auth: Auth
     def __init__(self, config: dict[str, dict[str, str]]):
         registered_types = get_type_hints(self)
         for k, v in config.items():

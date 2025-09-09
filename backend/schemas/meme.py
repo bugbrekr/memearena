@@ -1,9 +1,15 @@
-from pydantic import BaseModel
+import schemas.common
 
-class MemeVoteRequest(BaseModel):
-    vote: int
-
-class MemeRequest(BaseModel):
+class MemeRequest(schemas.common.ResponseModel):
     title: str
-    image_url: str
     description: str
+
+class MemeVoteRequest(schemas.common.ResponseModel):
+    upvote: bool
+    clicked: bool
+
+class MemeListResponse(schemas.common.ResponseModel):
+    memes: list[dict]
+
+class MemeResponse(schemas.common.ResponseModel):
+    meme_id: str
