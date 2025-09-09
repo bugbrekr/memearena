@@ -1,10 +1,11 @@
 import schemas.common
+from pydantic import BaseModel
 
-class MemeRequest(schemas.common.ResponseModel):
+class MemeRequest(BaseModel):
     title: str
     description: str
 
-class MemeVoteRequest(schemas.common.ResponseModel):
+class MemeVoteRequest(BaseModel):
     upvote: bool
     clicked: bool
 

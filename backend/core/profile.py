@@ -16,11 +16,12 @@ class ProfileManager:
             return False
         self.db.profiles.insert_one({
             "username": username,
-            "email": email
+            "email": email,
+            "voted_memes": {}
         })
         return True
     def get_profile(self, username: str) -> dict | None:
-        return self.db.profiles.find_one({"username": username})
+        return self.db.profiles.find_one({"username": username}, {"_id": 0})
 
     def update_profile(self, username: str, profile_data: dict) -> bool:
         result = self.db.profiles.update_one(

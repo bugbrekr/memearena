@@ -105,7 +105,8 @@ def auth_profile(authorization: Annotated[str | None, Header()] = None):
         success=True,
         code=200,
         username=profile["username"],
-        email=profile["email"]
+        email=profile["email"],
+        is_admin=(username == config.auth.admin_username)
     )
 
 # Meme routes
@@ -198,8 +199,16 @@ def meme_get(meme_id: str):
         )
 
 @app.get("/a/meme")
-def meme_list():
-    memes = meme_manager.list_memes()
+def meme_list(authorization: Annotated[str | None, Header()] = None):
+    code, username = authorization_manager.verify_auth_header(authorization)
+    if not username:
+        memes = meme_manager.list_memes(limit=8)
+        return schemas.meme.MemeListResponse(
+            success=True,
+            code=200,
+            memes=memes
+        )
+    memes = meme_manager.list_memes(limit=8, username=username)
     return schemas.meme.MemeListResponse(
         success=True,
         code=200,

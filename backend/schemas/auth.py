@@ -19,3 +19,4 @@ class RegisterResponse(schemas.common.ResponseModel):
 class ProfileResponse(schemas.common.ResponseModel):
     username: str
     email: str
+    is_admin: bool = False
